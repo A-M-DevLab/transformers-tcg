@@ -1,0 +1,551 @@
+/* styles.css */
+
+/* General Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Everything in the background of the header*/
+header {
+    width: 100%;
+    display: flex;
+    align-items: center; /* Vertically aligns children */
+    justify-content: center; /* Centers nav-links horizontally */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+
+    background: linear-gradient(to right, #B11226, #D92121, #B11226);
+    border-bottom: 5px solid transparent; /* Set a transparent top border */
+    border-image: linear-gradient(to right, #0047AB, #00BFFF, #0047AB); /* Apply gradient to the top border */
+    border-image-slice: 1; /* Ensures the gradient spans the entire top border */
+    padding: 5px 30px;
+    color: white;
+    z-index: 10;
+}
+
+/* Everything related to the Nav Button positioning */
+.nav-links {
+    display: flex;
+    align-items: center; /* Centers items vertically */
+    justify-content: center; /* Centers links horizontally */
+    margin: 0 auto; /* Centers the nav-links within the remaining space */
+    flex: 1 1 auto; /* Allows shrinking to prevent overlap */
+    z-index: 20; /* Ensures it stacks above header if needed */
+}
+
+header, .dropdown-menu {
+    position: relative;
+    margin-right: auto; /* Pushes the logo to the far left */
+    z-index: 10;
+}
+
+/* Top left logo styling */
+.logo {
+    flex: 0 0 auto; /* Prevent logo from expanding */
+    min-width: 100px;
+}
+
+/* Button Styles */
+.btn-5 {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: 130px;
+    height: 40px;
+    padding: 6px 12px;
+    border: 2px solid black;
+    background: linear-gradient(0deg, #0047AB, #4682BF, #0047AB);
+    font-size: 16px;
+    margin: 4px 10px;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none; /* Prevents hyperlink style */
+    color: white; /* Sets the text color to white */
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5), 0 6px 20px 0 rgba(0,0,0,0.5);
+}
+
+.btn-5:hover {
+    color: black;
+    background: linear-gradient(0deg, #0047AB, #4682BF, #0047AB);
+    border-radius: 5px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.5), 0 17px 50px 0 rgba(0,0,0,0.5)
+}
+
+.btn-5:before,
+.btn-5:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: #4682BF;
+    box-shadow:
+            -1px -1px 5px 0 #fff,
+            7px 7px 20px 0 #0003,
+            4px 4px 5px 0 #0002;
+    transition: 400ms ease all;
+}
+
+.btn-5:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+.btn-5:hover:before,
+.btn-5:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+}
+
+/* Navigation for buttons */
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    text-decoration: none;
+}
+
+nav ul li {
+    position: relative;
+}
+
+/* Dropdown Menu Styles */
+nav ul li .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    padding: 10px 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    z-index: 20;
+    text-decoration: none;
+}
+
+nav ul li:hover .dropdown-menu {
+    display: block; /* Show the dropdown on hover */
+    text-decoration: none;
+}
+
+/* Links inside dropdown */
+nav ul li .dropdown-menu li a {
+    padding: 5px 10px;
+    display: block; /* Ensure the link takes up full width */
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li .dropdown-menu li a:hover,
+nav ul li .dropdown-menu li a:focus {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+/* Nested Dropdown Styles */
+nav ul li .dropdown-menu li .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background-color: #444;
+    padding: 10px 0;
+    border-radius: 8px;
+    z-index: 30; /* Ensure nested menus appear above the parent dropdown */
+    white-space: nowrap;
+}
+
+nav ul li .dropdown-menu li:hover .dropdown-menu {
+    display: block; /* Show the nested dropdown on hover */
+}
+
+/* Links inside the nested dropdown */
+nav ul li .dropdown-menu li .dropdown-menu li a {
+    padding: 10px 25px; /* Indentation for sub-menu items */
+    background-color: #444;
+    border-radius: 8px; /* Rounded corners */
+    color: white;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+nav ul li .dropdown-menu li .dropdown-menu li a:hover,
+nav ul li .dropdown-menu li .dropdown-menu li a:focus {
+    background-color: #555;
+}
+
+/* Style the container to align input and button */
+.search-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc; /* Optional: Add a border for styling */
+    border-radius: 5px;
+    overflow: hidden; /* Ensure rounded corners */
+    width: 100%; /* Adjust width as needed */
+}
+
+/* Style the input field */
+.search-container input {
+    flex: 1; /* Take up available space */
+    border: none;
+    padding: 10px;
+    outline: none; /* Remove focus outline */
+}
+
+/* Style the button */
+.search-container button {
+    background: linear-gradient(0deg, #0047AB, #4682BF, #0047AB);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Carousel Maybe */
+
+
+
+/* Hero Section */
+.pet {
+    position: fixed;
+    bottom: 45px;
+    right: -50px;
+    z-index: 100;
+
+
+}
+.hero-container {
+    max-width: 100%; /* Ensure no max-width is limiting size */
+    overflow: hidden; /* Prevents overflow if image gets too large */
+}
+.hero {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px 50px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero .h2 {
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.showcase {
+    position: absolute;
+    right: 0;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #111;
+    transition: 0.5s;
+    z-index: 2;
+}
+
+.showcase.active {
+    right: 300px;
+}
+
+.showcase video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 10%;
+    z-index: -2;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 50px);
+    mix-blend-mode: overlay;
+    filter: saturate(-10%);
+    z-index: 1;
+}
+
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+
+}
+
+.text h2 {
+    font-size: 3em;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1em;
+    text-transform: uppercase;
+    max-width: 600px;
+}
+
+.text h3 {
+    font-size: 2em;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1em;
+    text-transform: uppercase;
+}
+
+.text p {
+    font-size: 1.1em;
+    color: #fff;
+    margin: 20px 0;
+    font-weight: 400;
+    max-width: 650px;
+}
+
+.text a {
+    display: inline-block;
+    font-size: 1em;
+    background: #fff;
+    padding: 10px 30px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 10px;
+    color: #111;
+    letter-spacing: 2px;
+    transition: 0.2s;
+}
+
+.text a:hover {
+    letter-spacing: 6px;
+}
+
+.background-block {
+    position: fixed; /* Element stays relative to the viewport */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust by 50% of width and height */
+    padding: 30px;
+    width: 1000px; /* Fixed width */
+    height: 600px; /* Fixed height */
+    margin: 0; /* Remove additional margins */
+    background: linear-gradient(0deg, #A8A9AD, white, #A8A9AD);
+    border-radius: 10px;
+    color: #333;
+    box-sizing: border-box;
+    z-index: 1;
+    overflow-y: auto; /* Allow vertical scrolling inside */
+    overflow-x: hidden;
+}
+
+.background-block::-webkit-scrollbar {
+    width: 20px;
+
+}
+
+.background-block::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of the scrollbar track */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5); /* Shadow inside the thumb */
+    border: 1px solid #A8A9AD; /* Border around the track */
+}
+
+.background-block::-webkit-scrollbar-thumb {
+    background: linear-gradient(to top, #0047AB, #4682BF, #0047AB);
+    border: black solid 1px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5); /* Shadow inside the thumb */
+}
+.background-block::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to top, #00337E, #33699A, #00337E); /* Darker gradient on hover */
+}
+
+/* Add Scrollbar Buttons */
+.background-block::-webkit-scrollbar-button {
+    height: 20px;
+    background: #0047AB; /* Arrow button background */
+    border: solid black 1px ; /* Border for the buttons */
+}
+
+.background-block::-webkit-scrollbar-button:increment {
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23FFFFFF" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat center center;
+    background-size: 20px 20px;
+
+}
+
+.background-block::-webkit-scrollbar-button:decrement {
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23FFFFFF" viewBox="0 0 24 24"><path d="M7 14l5-5 5 5z"/></svg>') no-repeat center center;
+    background-size: 20px 20px;
+}
+
+
+
+.background-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px; /* Matches inner content rounding */
+    z-index: -1; /* Place behind the main content */
+    pointer-events: none; /* Non-interactive */
+
+}
+
+/* Heading styles */
+.background-block h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Paragraph and list styling */
+.background-block p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.background-block ul {
+    margin-left: 20px;
+}
+
+.background-block ul li {
+    margin-bottom: 10px;
+}
+
+.background-block a {
+    color: #fff;  /* Set link color */
+    text-decoration: none;  /* Remove underline */
+}
+
+.background-block a:hover {
+    text-decoration: underline;
+}
+
+
+.pet {
+    position: fixed;
+    bottom:55px;
+    right: 50px;
+    z-index: 100;
+}
+    /* Footer */
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding: 0 20px; /* Added horizontal padding for spacing */
+        background-image: linear-gradient(to right, #0047AB, #00BFFF, #0047AB);
+        height: 60px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between; /* Distributes content across the footer */
+        align-items: center; /* Vertically center content */
+        z-index: 10;
+        opacity: 100%; /* Adjust the footer opacity */
+    }
+
+    .social-icons {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 400px; /* Adjusted to fit better */
+        padding-left: 10px;
+        margin-left: -20px;
+    }
+
+    .social-icons a {
+        display: inline-block;
+        border-radius: 5px;
+        padding: 7px;
+        transition: background-color 0.2s ease;
+    }
+
+    .social-icons a:hover {
+        background-color: #D3D3D3;
+        border: 2px solid black;
+    }
+
+    .social-icons img {
+        display: block;
+        padding: 0;
+        margin: 0;
+    }
+
+    .copyright {
+        text-align: center;
+        margin-left: -120px;
+        color: #D3D3D3;
+    }
+
+    .contact a {
+        text-align: center;
+        height: 50px;
+        line-height: normal;
+        text-decoration: none;
+        padding-top: 10px;
+        margin-right: 30px;
+        color: black;
+        transition: background-color 0.3s ease;
+        display: inline-block;
+        background: linear-gradient(0deg, #A8A9AD, #D3D3D3, #A8A9AD);
+    }
+
+    .contact a:hover {
+        background: #D3D3D3;
+        color: black;
+        background: linear-gradient(0deg, #A8A9AD, #D3D3D3, #A8A9AD);
+    }
+
+    .contact a:before,
+    .contact a:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 2px;
+        width: 0;
+        background: #B11226;
+        box-shadow: -1px -1px 5px 0 #fff,
+        7px 7px 20px 0 #0003,
+        4px 4px 5px 0 #0002;
+        transition: 400ms ease all;
+    }
+
+    .contact a:after {
+        right: inherit;
+        top: inherit;
+        left: 0;
+        bottom: 0;
+    }
+
+    .contact a:hover:before,
+    .contact a:hover:after {
+        width: 100%;
+        transition: 800ms ease all;
+    }
+
+
